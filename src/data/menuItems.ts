@@ -1,3 +1,4 @@
+
 import { Product, Category } from '../types/pos';
 
 export const products: Product[] = [
@@ -5,49 +6,49 @@ export const products: Product[] = [
   {
     id: 'cappuccino',
     name: 'Cappuccino',
-    price: 4.50,
+    price: 9.00,
     category: 'espresso',
   },
   {
     id: 'flat-white',
     name: 'Flat White',
-    price: 4.75,
+    price: 9.50,
     category: 'espresso',
   },
   {
     id: 'latte',
     name: 'Latte',
-    price: 4.50,
+    price: 9.00,
     category: 'espresso',
   },
   {
     id: 'americano',
     name: 'Americano',
-    price: 3.50,
+    price: 7.00,
     category: 'espresso',
   },
   {
     id: 'espresso-single',
     name: 'Single Espresso',
-    price: 3.00,
+    price: 6.00,
     category: 'espresso',
   },
   {
     id: 'espresso-double',
     name: 'Double Espresso',
-    price: 3.75,
+    price: 7.50,
     category: 'espresso',
   },
   {
     id: 'macchiato',
     name: 'Macchiato',
-    price: 3.75,
+    price: 7.50,
     category: 'espresso',
   },
   {
     id: 'mocha',
     name: 'Mocha',
-    price: 5.00,
+    price: 10.00,
     category: 'espresso',
   },
   
@@ -55,25 +56,25 @@ export const products: Product[] = [
   {
     id: 'cold-brew',
     name: 'Cold Brew',
-    price: 4.25,
+    price: 8.50,
     category: 'brewed',
   },
   {
     id: 'batch-brew',
     name: 'Batch Brew',
-    price: 3.25,
+    price: 6.50,
     category: 'brewed',
   },
   {
     id: 'pour-over',
     name: 'Pour Over',
-    price: 4.75,
+    price: 9.50,
     category: 'brewed',
   },
   {
     id: 'aeropress',
     name: 'AeroPress',
-    price: 4.50,
+    price: 9.00,
     category: 'brewed',
   },
   
@@ -81,25 +82,25 @@ export const products: Product[] = [
   {
     id: 'black-tea',
     name: 'Black Tea',
-    price: 3.50,
+    price: 7.00,
     category: 'tea',
   },
   {
     id: 'green-tea',
     name: 'Green Tea',
-    price: 3.50,
+    price: 7.00,
     category: 'tea',
   },
   {
     id: 'herbal-tea',
     name: 'Herbal Tea',
-    price: 3.50,
+    price: 7.00,
     category: 'tea',
   },
   {
     id: 'chai-latte',
     name: 'Chai Latte',
-    price: 4.50,
+    price: 9.00,
     category: 'tea',
   },
   
@@ -107,25 +108,25 @@ export const products: Product[] = [
   {
     id: 'hot-chocolate',
     name: 'Hot Chocolate',
-    price: 4.25,
+    price: 8.50,
     category: 'other',
   },
   {
     id: 'iced-tea',
     name: 'Iced Tea',
-    price: 3.75,
+    price: 7.50,
     category: 'other',
   },
   {
     id: 'lemonade',
     name: 'Lemonade',
-    price: 3.50,
+    price: 7.00,
     category: 'other',
   },
   {
     id: 'italian-soda',
     name: 'Italian Soda',
-    price: 4.00,
+    price: 8.00,
     category: 'other',
   },
 ];
