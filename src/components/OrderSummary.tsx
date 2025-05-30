@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { formatCurrency } from '@/lib/utils';
 
 const OrderSummary = () => {
-  const { state, removeItem, updateQuantity, clearOrder, completeOrder } = useOrder();
+  const { state, removeItem, updateQuantity, clearOrder, showOrderPreview } = useOrder();
   const { currentOrder } = state;
 
   return (
@@ -91,10 +91,10 @@ const OrderSummary = () => {
             </div>
 
             <Button 
-              onClick={completeOrder}
+              onClick={showOrderPreview}
               className="w-full bg-coffee-700 hover:bg-coffee-800"
             >
-              Complete Order
+              Review Order
             </Button>
           </div>
         </>

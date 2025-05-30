@@ -1,16 +1,16 @@
-
 import React, { useState } from 'react';
 import { categories } from '@/data/menuItems';
 import CategoryTabs from '@/components/CategoryTabs';
 import OrderSummary from '@/components/OrderSummary';
 import Receipt from '@/components/Receipt';
+import OrderPreview from '@/components/OrderPreview';
 import { OrderProvider, useOrder } from '@/context/OrderContext';
 import { Coffee } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Order } from '@/types/pos';
 
 const POSContent = () => {
-  const { state } = useOrder();
+  const { state, previewOpen, setPreviewOpen, completeOrder } = useOrder();
   const [receiptOrder, setReceiptOrder] = useState<Order | null>(null);
   const [receiptOpen, setReceiptOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -57,6 +57,13 @@ const POSContent = () => {
           )}
         </main>
       </div>
+
+      <OrderPreview 
+        order={state.currentOrder}
+        open={previewOpen}
+        onClose={() => setPreviewOpen(false)}
+        onConfirm={completeOrder}
+      />
 
       <Receipt 
         order={receiptOrder} 
