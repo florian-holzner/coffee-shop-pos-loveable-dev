@@ -9,7 +9,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Label } from '@/components/ui/label';
 import { Order } from '@/types/pos';
 import { formatCurrency } from '@/lib/utils';
@@ -79,20 +79,27 @@ const OrderPreview = ({ order, open, onClose, onConfirm }: OrderPreviewProps) =>
 
           <div className="space-y-3">
             <Label className="text-base font-medium">Payment Method</Label>
-            <RadioGroup value={paymentType} onValueChange={(value) => setPaymentType(value as PaymentType)}>
+            <ToggleGroup 
+              type="single" 
+              value={paymentType} 
+              onValueChange={(value) => value && setPaymentType(value as PaymentType)}
+              className="grid grid-cols-2 gap-2"
+            >
               {paymentOptions.map((option) => {
                 const IconComponent = option.icon;
                 return (
-                  <div key={option.value} className="flex items-center space-x-2">
-                    <RadioGroupItem value={option.value} id={option.value} />
-                    <Label htmlFor={option.value} className="flex items-center space-x-2 cursor-pointer">
-                      <IconComponent size={16} />
-                      <span>{option.label}</span>
-                    </Label>
-                  </div>
+                  <ToggleGroupItem 
+                    key={option.value}
+                    value={option.value} 
+                    className="flex items-center space-x-2 justify-center p-3"
+                    variant="outline"
+                  >
+                    <IconComponent size={16} />
+                    <span>{option.label}</span>
+                  </ToggleGroupItem>
                 );
               })}
-            </RadioGroup>
+            </ToggleGroup>
           </div>
         </div>
         
