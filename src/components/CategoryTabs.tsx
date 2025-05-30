@@ -1,48 +1,53 @@
 
-import React from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import React, { useState } from 'react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Category } from '@/types/pos';
 import MenuItem from '@/components/MenuItem';
-import { cn } from '@/lib/utils';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CategoryTabsProps {
   categories: Category[];
 }
 
 const CategoryTabs = ({ categories }: CategoryTabsProps) => {
-  const isMobile = useIsMobile();
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]?.id || '');
   
+  const currentCategory = categories.find(cat => cat.id === selectedCategory);
+
   return (
-    <Tabs defaultValue={categories[0].id} className="w-full">
-      <TabsList className={cn(
-        "flex w-full overflow-x-auto scrollbar-none bg-cream-50 p-1",
-        isMobile ? "justify-start" : "justify-center"
-      )}>
-        {categories.map((category) => (
-          <TabsTrigger
-            key={category.id}
-            value={category.id}
-            className="px-4 py-2 text-sm whitespace-nowrap data-[state=active]:bg-coffee-500 data-[state=active]:text-white"
-          >
-            {category.name}
-          </TabsTrigger>
-        ))}
-      </TabsList>
-      {categories.map((category) => (
-        <TabsContent 
-          key={category.id} 
-          value={category.id}
-          className="mt-4"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {category.items.map((product) => (
-              <MenuItem key={product.id} product={product} />
+    <div className="w-full">
+      <div className="mb-6">
+        <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+          <SelectTrigger className="w-full max-w-xs bg-cream-50 border-coffee-200">
+            <SelectValue placeholder="Select a category" />
+          </SelectTrigger>
+          <SelectContent className="bg-white border-coffee-200">
+            {categories.map((category) => (
+              <SelectItem 
+                key={category.id} 
+                value={category.id}
+                className="hover:bg-coffee-50 focus:bg-coffee-100"
+              >
+                {category.name}
+              </SelectItem>
             ))}
-          </div>
-        </TabsContent>
-      ))}
-    </Tabs>
+          </SelectContent>
+        </Select>
+      </div>
+      
+      {currentCategory && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {currentCategory.items.map((product) => (
+            <MenuItem key={product.id} product={product} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 
